@@ -185,12 +185,22 @@ begin
   except
     on E: EIdHTTPProtocolException do
     begin
+<<<<<<< 5b7db8156ae53c3facd3deed57519d0b39b04108
       if Length(E.ErrorMessage) > 0 then
       begin
         temp := TStringStream.Create(E.ErrorMessage);
         AResponse.CopyFrom(temp, temp.Size);
         temp.Free;
       end;
+=======
+      retryMode := hrmRaise;
+      if assigned(OnError) then
+        OnError(e.Message, e.ErrorMessage, e.ErrorCode, retryMode);
+      if retryMode = hrmRaise then
+        raise EHTTPError.Create(e.Message, e.ErrorMessage, e.ErrorCode)
+      else if retryMode = hrmRetry then
+        Get(AUrl, AResponse);
+>>>>>>> 404 will now be raised per default.
     end;
     on E: EIdSocketError do
     begin
@@ -264,12 +274,22 @@ begin
   except
     on E: EIdHTTPProtocolException do
     begin
+<<<<<<< 5b7db8156ae53c3facd3deed57519d0b39b04108
       if Length(E.ErrorMessage) > 0 then
       begin
         temp := TStringStream.Create(E.ErrorMessage);
         AResponse.CopyFrom(temp, temp.Size);
         temp.Free;
       end;
+=======
+      retryMode := hrmRaise;
+      if assigned(OnError) then
+        OnError(e.Message, e.ErrorMessage, e.ErrorCode, retryMode);
+      if retryMode = hrmRaise then
+        raise EHTTPError.Create(e.Message, e.ErrorMessage, e.ErrorCode)
+      else if retryMode = hrmRetry then
+        Patch(AUrl, AContent, AResponse);
+>>>>>>> 404 will now be raised per default.
     end;
     on E: EIdSocketError do
     begin
@@ -295,12 +315,22 @@ begin
   except
     on E: EIdHTTPProtocolException do
     begin
+<<<<<<< 5b7db8156ae53c3facd3deed57519d0b39b04108
       if Length(E.ErrorMessage) > 0 then
       begin
         temp := TStringStream.Create(E.ErrorMessage);
         AResponse.CopyFrom(temp, temp.Size);
         temp.Free;
       end;
+=======
+      retryMode := hrmRaise;
+      if assigned(OnError) then
+        OnError(e.Message, e.ErrorMessage, e.ErrorCode, retryMode);
+      if retryMode = hrmRaise then
+        raise EHTTPError.Create(e.Message, e.ErrorMessage, e.ErrorCode)
+      else if retryMode = hrmRetry then
+        Post(AUrl, AContent, AResponse);
+>>>>>>> 404 will now be raised per default.
     end;
     on E: EIdSocketError do
     begin
@@ -326,12 +356,22 @@ begin
   except
     on E: EIdHTTPProtocolException do
     begin
+<<<<<<< 5b7db8156ae53c3facd3deed57519d0b39b04108
       if Length(E.ErrorMessage) > 0 then
       begin
         temp := TStringStream.Create(E.ErrorMessage);
         AResponse.CopyFrom(temp, temp.Size);
         temp.Free;
       end;
+=======
+      retryMode := hrmRaise;
+      if assigned(OnError) then
+        OnError(e.Message, e.ErrorMessage, e.ErrorCode, retryMode);
+      if retryMode = hrmRaise then
+        raise EHTTPError.Create(e.Message, e.ErrorMessage, e.ErrorCode)
+      else if retryMode = hrmRetry then
+        Put(AUrl, AContent, AResponse);
+>>>>>>> 404 will now be raised per default.
     end;
     on E: EIdSocketError do
     begin
